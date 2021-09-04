@@ -8,3 +8,4 @@
 5. https://www.linkedin.com/learning/learning-regular-expressions-2/write-text-matching-patterns
 6. https://regex101.com/
 7. https://regexone.com/
+8. https://campus.datacamp.com/courses/regular-expressions-in-python
