@@ -12,18 +12,17 @@
 
 
 ## Example 
+Using dictionary in string formating.
 ```python:
-# Assign the substrings to the variables
-first_pos = wikipedia_article[3:19].lower()
-second_pos = wikipedia_article[21:44].lower()
+# Create a dictionary
+plan = {
+  		"field": courses[0],
+        "tool": courses[1]
+        }
 
-# Define string with placeholders 
-my_list.append("The tool {} is used in {}")
+# Complete the placeholders accessing elements of field and tool keys in the data dictionary
+my_message = "If you are interested in {data[field]}, you can take the course related to {data[tool]}"
 
-# Define string with rearranged placeholders
-my_list.append("The tool {1} is used in {0}")
-
-# Use format to print strings
-for my_string in my_list:
-  	print(my_string.format(first_pos, second_pos))
+# Use the plan dictionary to replace placeholders
+print(my_message.format(data=plan))
 ```
