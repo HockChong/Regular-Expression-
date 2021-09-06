@@ -21,7 +21,8 @@ my_message = "If you are interested in {data[field]}, you can take the course re
 
 # Use the plan dictionary to replace placeholders
 print(my_message.format(data=plan))
-
+```
+```
 If you are interested in artificial intelligence, you can take the course related to neural networks
 ```
 
@@ -59,7 +60,9 @@ for example in emails:
         # Complete the format method to print out the result
       	print("The email {email_example} is a valid email".format(email_example=example))
     else:
-      	print("The email {email_example} is invalid".format(email_example=example))   
+      	print("The email {email_example} is invalid".format(email_example=example))  
+```
+```
         
 The email n.john.smith@gmail.com is a valid email
 The email 87victory@hotmail.com is a valid email
@@ -74,6 +77,7 @@ https://docs.python.org/2/library/re.html?highlight=matching%20searching#search-
  - greedy quantifier ( `*` , `+` , `?`) will try to match as much as possible while a non-greedy quantifier (Append `?` to greedy quantiers to match as few characters as needed ) will do it as few times as needed, expanding one character at a time and giving us the match we are looking for.
 
 - Capturing the group using `()`
+- - include `?:` after the opening parenthesis of the non-capturing group in the regex. `(?:regex)`
 ``` python
 # Write regex to capture information of the flight
 regex = r"([A-Z]{2})(\d{4})\s([A-Z]{3})-([A-Z]{3})\s(\d{2}[A-Z]{3})"
@@ -85,8 +89,34 @@ flight_matches = re.findall(regex, flight)
 print("Airline: {} Flight number: {}".format(flight_matches[0][0], flight_matches[0][1]))
 print("Departure: {} Destination: {}".format(flight_matches[0][2], flight_matches[0][3]))
 print("Date: {}".format(flight_matches[0][4]))
-
+```
+```
 Airline: IB Flight number: 3723
 Departure: AMS Destination: MAD
 Date: 06OCT
 ```
+Using .group index start from 1. Only if you use .search() and .match(), you can use .group() to retrieve the groups.
+Backreferences are very helpful when you need to reuse part of the regex match inside the regex. Knowing when and how to use them will simplify many of your tasks!
+```python
+html_tags = ['<body>Welcome to our course! It would be an awesome experience</body>',
+ '<article>To be a data scientist, you need to have knowledge in statistics and mathematics</article>',
+ '<nav>About me Links Contact me!']
+ 
+ for string in html_tags:
+    # Complete the regex and find if it matches a closed HTML tags
+    match_tag =  re.match(r"<(\w+)>.*?</\1>", string)
+ 
+    if match_tag:
+        # If it matches print the first group capture
+        print("Your tag {} is closed".format(match_tag.group(1))) 
+    else:
+        # If it doesn't match capture only the tag 
+        notmatch_tag = re.match(r"<(\w+)>", string)
+        # Print the first group capture
+        print("Close your {} tag!".format(notmatch_tag.group(1)))
+ ```
+ ```
+ Your tag body is closed
+Your tag article is closed
+Close your nav tag!
+      
